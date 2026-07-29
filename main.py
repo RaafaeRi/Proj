@@ -1,4 +1,5 @@
 import requests
+import json
 
 companies = [
     "stripe",
@@ -28,17 +29,17 @@ softwareWords = [
     "embedded"
 ]
 
+internships = []
 
 for company in companies:
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
 
-    response = requests.get(url)
-
+    response = requests.get(url, timeout=10)
+    
+    print(f'Searching for {company}...')
     if response.status_code == 200:
         data = response.json()
-        print(f'Searching for {company}...')
-        print("-------------------------------------")
-        counter = 0
+        
         for job in data["jobs"]:
             title = job["title"]
             cleanTitle = title.lower().replace(",", "").replace("-", " ").replace("/", " ")
@@ -49,16 +50,29 @@ for company in companies:
             hasInternWord = any(word in titleWords for word in internWords)
             hasSoftwareWord = any(word in titleWords for word in softwareWords)
             if hasInternWord and hasSoftwareWord:
-                print(title)
-                print(location)
-                print(job['absolute_url'])
-                print()
-                counter += 1
-
-
-        print("-------------------------------------")
-        print(f"Found {counter} internship(s).")
-        print("\n")
+                internship = {
+                    "company": company,
+                    "title": title,
+                    "location": location,
+                    "url": job["absolute_url"]
+                }
+                internships.append(internship)
     else:
         print(f"Request failed for {company}")
 
+print("-------------------------------------")
+
+for internship in internships:
+    print(internship["company"].title())
+    print(internship["title"])
+    print(internship["location"])
+    print(internship["url"])
+    print()
+
+print("-------------------------------------")
+print(f"Found {len(internships)} internships.")
+
+with open("internships.json", "w") as file:
+    json.dump(internships, file, indent=4)
+
+print("Results saved.")
