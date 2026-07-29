@@ -6,9 +6,28 @@ companies = [
     "openai",
     "cloudflare",
     "plaid",
-    "Discord",
-    "Notion",
+    "discord",
+    "notion",
 ]
+
+internWords = [
+    "intern",
+    "internship",
+    "internships",
+]
+
+softwareWords = [
+    "software",
+    "swe",
+    "developer",
+    "development",
+    "frontend",
+    "backend",
+    "fullstack",
+    "firmware",
+    "embedded"
+]
+
 
 for company in companies:
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
@@ -26,13 +45,16 @@ for company in companies:
             location = job["location"]["name"]
 
 
-            if "engineer" and "intern" in titleWords:
+            hasInternWord = any(word in titleWords for word in internWords)
+            hasSoftwareWord = any(word in titleWords for word in softwareWords)
+            if hasInternWord and hasSoftwareWord:
                 print(title)
                 print(location)
-                print(job["absolute_url"])
+                print(job['absolute_url'])
                 print()
                 counter += 1
-    
+
+                
         print("-------------------------------------")
         print(f"Found {counter} internship(s).")
         print("\n")
