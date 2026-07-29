@@ -1,6 +1,6 @@
 import requests
 
-company = "stripe"
+company = input("Enter company to search for: ").lower().strip()
 
 url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
 
@@ -8,7 +8,7 @@ response = requests.get(url)
 
 if response.status_code == 200:
     data = response.json()
-    print(f'Searching for {company}. . .')
+    print(f'Searching for {company}...')
     print("-------------------------------------")
     counter = 0
     for job in data["jobs"]:
