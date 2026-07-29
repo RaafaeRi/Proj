@@ -31,6 +31,17 @@ softwareWords = [
 
 internships = []
 
+try:
+    with open("internships.json", "r") as file:
+        oldInternships = json.load(file)
+except FileNotFoundError:
+    oldInternships = []
+
+oldUrls = []
+for internship in oldInternships:
+    oldUrls.append(internship["url"])
+
+
 for company in companies:
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
 
@@ -51,12 +62,14 @@ for company in companies:
             hasSoftwareWord = any(word in titleWords for word in softwareWords)
             if hasInternWord and hasSoftwareWord:
                 internship = {
-                    "company": company,
+                    "company": company.title(),
                     "title": title,
                     "location": location,
                     "url": job["absolute_url"]
                 }
-                internships.append(internship)
+                for internship in internships:
+                    if internship["url"] not in oldUrls:
+                        internships.append(internship)
     else:
         print(f"Request failed for {company}")
 
@@ -70,7 +83,7 @@ for internship in internships:
     print()
 
 print("-------------------------------------")
-print(f"Found {len(internships)} internships.")
+print(f"Found {len(internships)} new internships.")
 
 with open("internships.json", "w") as file:
     json.dump(internships, file, indent=4)
