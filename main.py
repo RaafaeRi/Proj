@@ -41,7 +41,8 @@ for company in companies:
         counter = 0
         for job in data["jobs"]:
             title = job["title"]
-            titleWords = title.lower().split()
+            cleanTitle = title.lower().replace(",", "").replace("-", " ").replace("/", " ")
+            titleWords = cleanTitle.split()
             location = job["location"]["name"]
 
 
@@ -54,7 +55,7 @@ for company in companies:
                 print()
                 counter += 1
 
-                
+
         print("-------------------------------------")
         print(f"Found {counter} internship(s).")
         print("\n")
