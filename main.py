@@ -41,7 +41,7 @@ oldUrls = []
 for internship in oldInternships:
     oldUrls.append(internship["url"])
 
-
+newInternships = []
 for company in companies:
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
 
@@ -67,15 +67,17 @@ for company in companies:
                     "location": location,
                     "url": job["absolute_url"]
                 }
-                for internship in internships:
+                internships.append(internship)
+
+                for internship in newInternships:
                     if internship["url"] not in oldUrls:
-                        internships.append(internship)
+                        newInternships.append(internship)
     else:
         print(f"Request failed for {company}")
 
 print("-------------------------------------")
 
-for internship in internships:
+for internship in newInternships:
     print(internship["company"].title())
     print(internship["title"])
     print(internship["location"])
@@ -83,7 +85,7 @@ for internship in internships:
     print()
 
 print("-------------------------------------")
-print(f"Found {len(internships)} new internships.")
+print(f"Found {len(newInternships)} new internships.")
 
 with open("internships.json", "w") as file:
     json.dump(internships, file, indent=4)
