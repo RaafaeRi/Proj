@@ -69,9 +69,8 @@ for company in companies:
                 }
                 internships.append(internship)
 
-                for internship in newInternships:
-                    if internship["url"] not in oldUrls:
-                        newInternships.append(internship)
+                if internship["url"] not in oldUrls:
+                    newInternships.append(internship)
     else:
         print(f"Request failed for {company}")
 
