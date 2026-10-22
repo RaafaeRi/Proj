@@ -59,6 +59,24 @@ def saveInternshipsToDatabase(internships):
     connection.commit()
     connection.close()
 
+def saveInternshipsToDatabase(internships):
+    connection = getConnection()
+
+    for internship in internships:
+        connection.execute("""
+            INSERT OR IGNORE INTO internships
+            (company, title, location, url)
+            VALUES (?, ?, ?, ?)
+        """, (
+            internship["company"],
+            internship["title"],
+            internship["location"],
+            internship["url"]
+        ))
+
+    connection.commit()
+    connection.close()
+
 if __name__ == "__main__":
     initializeDatabase()
     print("Database initialized successfully!")

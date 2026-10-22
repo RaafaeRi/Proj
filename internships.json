@@ -1,14 +1,50 @@
 [
     {
         "company": "Stripe",
+        "title": "High School Internship, Software Engineering (Summer 2027)",
+        "location": "Seattle, San Francisco",
+        "url": "https://stripe.com/jobs/search?gh_jid=8241260"
+    },
+    {
+        "company": "Stripe",
+        "title": "Software Engineer, Intern",
+        "location": "Singapore",
+        "url": "https://stripe.com/jobs/search?gh_jid=8130883"
+    },
+    {
+        "company": "Stripe",
+        "title": "Software Engineer, Intern",
+        "location": "London",
+        "url": "https://stripe.com/jobs/search?gh_jid=8130867"
+    },
+    {
+        "company": "Stripe",
         "title": "Software Engineer, Intern",
         "location": "Bengaluru",
         "url": "https://stripe.com/jobs/search?gh_jid=8031833"
     },
     {
-        "company": "Cloudflare",
-        "title": "Software Engineer Intern (Fall 2026) - Austin, TX",
-        "location": "In-Office",
-        "url": "https://boards.greenhouse.io/cloudflare/jobs/8052785?gh_jid=8052785"
+        "company": "Stripe",
+        "title": "Software Engineer, Intern ",
+        "location": "Bucharest",
+        "url": "https://stripe.com/jobs/search?gh_jid=8130807"
+    },
+    {
+        "company": "Stripe",
+        "title": "Software Engineer, Intern (Summer or Winter)",
+        "location": "Dublin",
+        "url": "https://stripe.com/jobs/search?gh_jid=8097801"
+    },
+    {
+        "company": "Stripe",
+        "title": "Software Engineer, Intern (Summer or Winter)",
+        "location": "Toronto",
+        "url": "https://stripe.com/jobs/search?gh_jid=8130805"
+    },
+    {
+        "company": "Stripe",
+        "title": "Software Engineer, Intern (Summer or Winter)",
+        "location": "San Francisco, Seattle, New York City",
+        "url": "https://stripe.com/jobs/search?gh_jid=8128745"
     }
 ]
