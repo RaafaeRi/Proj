@@ -128,11 +128,16 @@ def saveInternships(internships):
 
     print("Results saved.")
 
-oldInternships = loadInternships()
-oldUrls = getOldUrls(oldInternships)
+def scrapeInternships():
+    oldInternships = loadInternships()
+    oldUrls = getOldUrls(oldInternships)
 
-internships = companySearching(companies)
-newInternships = findNewInternships(internships, oldUrls)
+    internships = companySearching(companies)
+    newInternships = findNewInternships(internships, oldUrls)
 
-printInternships(newInternships)
-saveInternships(internships)
+    printInternships(newInternships)
+    saveInternships(internships)
+    return internships
+
+if __name__ == "__main__":
+    scrapeInternships()
