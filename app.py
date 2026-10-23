@@ -9,6 +9,7 @@ from typing import Literal
 from fastapi import HTTPException
 from main import scrapeInternships
 from database import saveInternshipsToDatabase
+import os
 
 class PreferenceRequest(BaseModel):
     username: str
@@ -16,7 +17,7 @@ class PreferenceRequest(BaseModel):
     status: Literal["saved", "hidden", "none"]
 
 
-app = FastAPI()
+app = FastAPI(root_path=os.getenv("APP_ROOT_PATH", ""))
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

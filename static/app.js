@@ -1,7 +1,12 @@
+
 let currentView = "results";
 let internships = [];
 
 const $ = (id) => document.getElementById(id);
+
+const basePath = document.currentScript
+    .getAttribute("src")
+    .replace(/\/static\/app\.js(?:\?.*)?$/, "");
 
 function showMessage(message) {
     $("message").textContent = message;
@@ -38,7 +43,7 @@ async function loadInternships() {
 
     try {
         internships = await apiRequest(
-            `/api/internships?${parameters}`
+            `${basePath}/api/internships?${parameters}`
         );
 
         displayInternships();
@@ -142,7 +147,7 @@ async function updatePreferences(ids, status) {
     }
 
     try {
-        await apiRequest("/api/preferences", {
+        await apiRequest(`${basePath}/api/preferences`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -192,7 +197,7 @@ $("refresh").onclick = async () => {
 
     try {
         const result = await apiRequest(
-            `/api/refresh?company=${encodeURIComponent(company)}`,
+            `${basePath}/api/refresh?company=${encodeURIComponent(company)}`,
             { method: "POST" }
         );
 
