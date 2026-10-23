@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+}
+
+.navbar {
+    padding: 18px 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+#jobs .card-body {
+    padding: 24px;
+}
+
+#message {
+    font-size: 0.9rem;
+}
+
+.internship-checkbox {
+    cursor: pointer;
+}
